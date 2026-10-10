@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080808">
+    <meta name="description" content="Deep learning powered environmental audio classification system.">
+    <title>EchoAI | Environmental Audio Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="navbar">
+        <a href="#home" class="brand">
+            <span class="brand-icon">E</span>
+            <span>ECHO<span class="red-text">AI</span><small>AUDIO INTELLIGENCE</small></span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#technology">Technology</a>
+            <a href="#classifier">Classifier</a>
+            <a href="#workflow">Workflow</a>
+        </nav>
+
+        <a href="#classifier" class="nav-cta">Try the model <span>↗</span></a>
+    </header>
+
+    <main>
+        <section class="hero section" id="home">
+            <div class="hero-copy">
+                <div class="eyebrow"><span class="status-dot"></span> DEEP LEARNING PROJECT <span class="eyebrow-line"></span> 2026</div>
+
+                <h1>Every sound<br>has a <span class="outline-text">story.</span></h1>
+
+                <p class="hero-description">
+                    Turning environmental audio into meaningful predictions with
+                    machine learning, sound feature extraction, and deep learning.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#classifier">Classify audio <span>↗</span></a>
+                    <a class="button button-secondary" href="#about">Explore the project <span>↓</span></a>
+                </div>
+
+                <div class="hero-meta">
+                    <span><i class="tiny-square"></i> AUDIO ANALYSIS</span>
+                    <span><i class="tiny-square"></i> MACHINE LEARNING</span>
+                    <span><i class="tiny-square"></i> PYTHON</span>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-top"><span>LIVE AUDIO VISUALIZATION</span><span class="live-indicator">● SYSTEM READY</span></div>
+
+                <div class="sound-orb">
+                    <div class="orb-ring ring-one"></div>
+                    <div class="orb-ring ring-two"></div>
+                    <div class="orb-ring ring-three"></div>
+                    <div class="orb-core"><span>♫</span></div>
+                    <div class="orb-cross"></div>
+                </div>
+
+                <div class="waveform" aria-label="Decorative audio waveform">
+                    <span style="--h:20%"></span><span style="--h:34%"></span>
+                    <span style="--h:50%"></span><span style="--h:25%"></span>
+                    <span style="--h:65%"></span><span style="--h:80%"></span>
+                    <span style="--h:40%"></span><span style="--h:95%"></span>
+                    <span style="--h:60%"></span><span style="--h:30%"></span>
+                    <span style="--h:75%"></span><span style="--h:100%"></span>
+                    <span style="--h:45%"></span><span style="--h:70%"></span>
+                    <span style="--h:35%"></span><span style="--h:85%"></span>
+                    <span style="--h:50%"></span><span style="--h:28%"></span>
+                    <span style="--h:65%"></span><span style="--h:42%"></span>
+                    <span style="--h:90%"></span><span style="--h:33%"></span>
+                    <span style="--h:56%"></span><span style="--h:23%"></span>
+                    <span style="--h:75%"></span><span style="--h:48%"></span>
+                    <span style="--h:85%"></span><span style="--h:37%"></span>
+                    <span style="--h:58%"></span><span style="--h:30%"></span>
+                </div>
+
+                <div class="visual-bottom">
+                    <div><small>ENGINE</small><strong>ML / AUDIO</strong></div>
+                    <div><small>INPUT</small><strong>ENVIRONMENTAL SOUND</strong></div>
+                    <div><small>STATUS</small><strong class="red-text">STANDBY</strong></div>
+                </div>
+                <span class="visual-index">01 / AUDIO INTELLIGENCE</span>
+            </div>
+        </section>
+
+        <div class="ticker">
+            <div class="ticker-track">
+                <span>AUDIO CLASSIFICATION <b>✳</b> MACHINE LEARNING <b>✳</b> MFCC FEATURES <b>✳</b> SOUND RECOGNITION <b>✳</b> PYTHON <b>✳</b></span>
+                <span>AUDIO CLASSIFICATION <b>✳</b> MACHINE LEARNING <b>✳</b> MFCC FEATURES <b>✳</b> SOUND RECOGNITION <b>✳</b> PYTHON <b>✳</b></span>
+            </div>
+        </div>
+
+        <section class="section about-section" id="about">
+            <div class="section-label"><span>01</span> / THE CONCEPT</div>
+
+            <div class="about-grid">
+                <div>
+                    <p class="mini-heading">BEYOND WHAT WE HEAR</p>
+                    <h2>Making sense of<br>the <span class="red-text">soundscape.</span></h2>
+                </div>
+
+                <div class="about-copy">
+                    <p>
+                        Environmental audio carries information about the world
+                        around us. This project explores how machine learning can
+                        learn sound patterns and assign an audio recording to a
+                        predicted category.
+                    </p>
+                    <p>
+                        Upload a supported recording to test the trained model.
+                        The application processes the audio, extracts features,
+                        and returns its predicted class.
+                    </p>
+                    <a href="#classifier" class="text-link">TEST THE CLASSIFIER <span>↗</span></a>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <span class="card-number">01 / INPUT</span>
+                    <div class="feature-icon">⌁</div>
+                    <h3>Audio Input</h3>
+                    <p>Upload an environmental recording in a supported audio format.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="card-number">02 / PROCESS</span>
+                    <div class="feature-icon">⌘</div>
+                    <h3>Feature Extraction</h3>
+                    <p>Transform the waveform into numerical features for model inference.</p>
+                </article>
+
+                <article class="feature-card">
+                    <span class="card-number">03 / PREDICT</span>
+                    <div class="feature-icon">↗</div>
+                    <h3>Sound Prediction</h3>
+                    <p>Display the class predicted by the loaded machine learning model.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="technology-section" id="technology">
+            <div class="section section-inner">
+                <div class="section-label"><span>02</span> / THE TOOLKIT</div>
+
+                <div class="technology-heading">
+                    <h2>Built with <span class="red-text">purpose.</span></h2>
+                    <p>A practical combination of audio processing, model inference, and web development.</p>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="tech-card"><span class="tech-symbol">Py</span><div><h3>Python</h3><p>Core application logic</p></div><span class="tech-arrow">↗</span></div>
+                    <div class="tech-card"><span class="tech-symbol">ML</span><div><h3>Machine Learning</h3><p>Trained model inference</p></div><span class="tech-arrow">↗</span></div>
+                    <div class="tech-card"><span class="tech-symbol">♫</span><div><h3>Librosa</h3><p>Audio loading and features</p></div><span class="tech-arrow">↗</span></div>
+                    <div class="tech-card"><span class="tech-symbol">Fl</span><div><h3>Flask</h3><p>Backend and API</p></div><span class="tech-arrow">↗</span></div>
+                    <div class="tech-card"><span class="tech-symbol">HT</span><div><h3>HTML / CSS</h3><p>Responsive interface</p></div><span class="tech-arrow">↗</span></div>
+                    <div class="tech-card"><span class="tech-symbol">JS</span><div><h3>JavaScript</h3><p>Interactive user experience</p></div><span class="tech-arrow">↗</span></div>
+                </div>
+
+                <p class="tech-note">The listed audio-processing pipeline must match the preprocessing used to train the saved model.</p>
+            </div>
+        </section>
+
+        <section class="section classifier-section" id="classifier">
+            <div class="section-label"><span>03</span> / TRY IT YOURSELF</div>
+
+            <div class="classifier-heading">
+                <div>
+                    <p class="mini-heading">YOUR SOUND. OUR MODEL.</p>
+                    <h2>Let's hear what<br>your audio <span class="red-text">reveals.</span></h2>
+                </div>
+                <p>Choose an audio recording, submit it for analysis, and view the model's prediction.</p>
+            </div>
+
+            <div class="classifier-panel">
+                <div class="panel-top">
+                    <span><span class="status-dot"></span> CLASSIFICATION CONSOLE</span>
+                    <span>SUPPORTED AUDIO / MAX 25 MB</span>
+                </div>
+
+                <form id="audioForm">
+                    <label class="upload-zone" id="uploadZone" for="audioFile">
+                        <input type="file" id="audioFile" name="audio" accept=".wav,.mp3,.ogg,.flac,.m4a,audio/*" hidden>
+                        <span class="upload-icon">↑</span>
+                        <strong id="uploadTitle">Drop your audio file here</strong>
+                        <span id="uploadDescription">or click to browse your device</span>
+                        <span class="file-formats">WAV · MP3 · OGG · FLAC · M4A</span>
+                    </label>
+
+                    <div class="selected-file" id="selectedFile" hidden>
+                        <span class="file-icon">♫</span>
+                        <div class="file-details">
+                            <strong id="fileName">audio.wav</strong>
+                            <span id="fileSize">0 MB</span>
+                        </div>
+                        <button type="button" id="removeFile" class="remove-file" aria-label="Remove file">×</button>
+                    </div>
+
+                    <audio id="audioPreview" controls hidden></audio>
+
+                    <button type="submit" class="button button-primary analyze-button" id="analyzeButton">
+                        Analyze audio <span>↗</span>
+                    </button>
+                </form>
+
+                <div class="result-panel" id="resultPanel" hidden aria-live="polite">
+                    <div class="result-divider"></div>
+                    <p class="mini-heading">MODEL OUTPUT</p>
+                    <p class="result-label">PREDICTED SOUND CATEGORY</p>
+                    <h3 id="predictionText">Waiting for prediction</h3>
+                    <div class="confidence-row" id="confidenceRow" hidden>
+                        <span>Model confidence</span>
+                        <strong id="confidenceText">--</strong>
+                    </div>
+                    <div class="confidence-track" id="confidenceTrack" hidden>
+                        <span id="confidenceBar"></span>
+                    </div>
+                    <p class="result-disclaimer">This result is a model prediction, not a guarantee of the actual sound source.</p>
+                </div>
+
+                <p class="form-message" id="formMessage" role="status"></p>
+            </div>
+        </section>
+
+        <section class="section workflow-section" id="workflow">
+            <div class="section-label"><span>04</span> / UNDER THE HOOD</div>
+            <h2>From waveform<br>to <span class="red-text">prediction.</span></h2>
+
+            <div class="workflow-list">
+                <article><span class="workflow-index">01</span><div><h3>Upload the recording</h3><p>A supported audio file is submitted through the browser interface.</p></div><span class="workflow-mark">↗</span></article>
+                <article><span class="workflow-index">02</span><div><h3>Process the audio</h3><p>The backend loads the audio and extracts the features expected by the model.</p></div><span class="workflow-mark">↗</span></article>
+                <article><span class="workflow-index">03</span><div><h3>Run model inference</h3><p>The saved model receives the feature vector and predicts a class.</p></div><span class="workflow-mark">↗</span></article>
+                <article><span class="workflow-index">04</span><div><h3>Present the result</h3><p>The prediction and supported confidence score are displayed on the page.</p></div><span class="workflow-mark">↗</span></article>
+            </div>
+        </section>
+
+        <section class="closing-section">
+            <span class="closing-kicker">ENVIRONMENTAL AUDIO CLASSIFICATION</span>
+            <h2>Listen closer.<br><span>Think deeper.</span></h2>
+            <a href="#classifier" class="button button-primary">Try the classifier <span>↑</span></a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="#home" class="brand">
+            <span class="brand-icon">E</span>
+            <span>ECHO<span class="red-text">AI</span><small>AUDIO INTELLIGENCE</small></span>
+        </a>
+        <p>Designed & developed by <strong>Varsha A</strong></p>
+        <a href="#home" class="back-top">BACK TO TOP ↑</a>
+        <span class="copyright">© 2026 · ENVIRONMENTAL AUDIO CLASSIFICATION</span>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
