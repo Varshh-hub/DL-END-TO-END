@@ -1,6 +1,8 @@
-streamlit
-huggingface_hub
+streamlit==1.45.1
+huggingface-hub==0.30.2
 librosa==0.10.2.post1
 numpy==1.26.4
 scikit-learn==1.5.2
 soundfile==0.12.1
+scipy==1.13.1
+joblib==1.4.2
