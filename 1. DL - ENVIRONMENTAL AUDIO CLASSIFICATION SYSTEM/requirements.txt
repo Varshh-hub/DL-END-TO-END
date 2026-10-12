@@ -1,0 +1,6 @@
+streamlit
+huggingface_hub
+librosa==0.10.2.post1
+numpy==1.26.4
+scikit-learn==1.5.2
+soundfile==0.12.1
