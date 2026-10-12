@@ -1,4 +1,3 @@
-
 import os
 import pickle
 import traceback
@@ -8,6 +7,7 @@ import librosa
 import numpy as np
 from flask import Flask, jsonify, render_template, request
 from werkzeug.utils import secure_filename
+from huggingface_hub import hf_hub_download
 
 app = Flask(
     __name__,
@@ -17,7 +17,6 @@ app = Flask(
 )
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "bestmodel.pkl"
 UPLOAD_DIR = BASE_DIR / "uploads"
 
 ALLOWED_EXTENSIONS = {"wav", "mp3", "ogg", "flac", "m4a"}
@@ -28,11 +27,20 @@ UPLOAD_DIR.mkdir(exist_ok=True)
 model = None
 model_error = None
 
+# Download the large model from Hugging Face instead of storing it in GitHub.
 try:
+    MODEL_PATH = hf_hub_download(
+        repo_id="Varshhh6/environmental-audio-classifier",
+        filename="bestmodel.pkl",
+        repo_type="model"
+    )
+
     with open(MODEL_PATH, "rb") as model_file:
         model = pickle.load(model_file)
+
 except Exception as exc:
     model_error = str(exc)
+    traceback.print_exc()
 
 
 def allowed_file(filename):
@@ -115,8 +123,8 @@ def extract_audio_features(file_path):
 def predict_audio(file_path):
     if model is None:
         raise RuntimeError(
-            "The model could not be loaded. Check that bestmodel.pkl "
-            "exists in the parent project folder."
+            "The model could not be loaded. Check the Hugging Face model "
+            f"repository and dependencies. Details: {model_error}"
         )
 
     features = extract_audio_features(file_path)
@@ -149,7 +157,7 @@ def home():
 def classify_audio():
     if model is None:
         return jsonify({
-            "error": "Model loading failed. Check bestmodel.pkl and its dependencies.",
+            "error": "Model loading failed. Check Hugging Face access and dependencies.",
             "details": model_error
         }), 500
 
@@ -175,6 +183,7 @@ def classify_audio():
         return jsonify(result)
 
     except Exception as exc:
+        traceback.print_exc()
         return jsonify({
             "error": str(exc)
         }), 500
@@ -192,4 +201,8 @@ def file_too_large(_error):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
+        debug=False
+    )
