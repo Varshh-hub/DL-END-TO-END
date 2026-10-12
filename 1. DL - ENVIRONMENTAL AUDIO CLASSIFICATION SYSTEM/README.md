@@ -236,4 +236,3 @@ AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer | Python | 
 
 **GitHub:** [Varshh-hub](https://github.com/Varshh-hub)
 
-**Project Repository:** [DL-END-TO-END](https://github.com/Varshh-hub/DL-END-TO-END/tree/main/1.%20DL%20-%20ENVIRONMENTAL%20AUDIO%20CLASSIFICATION%20SYSTEM)
