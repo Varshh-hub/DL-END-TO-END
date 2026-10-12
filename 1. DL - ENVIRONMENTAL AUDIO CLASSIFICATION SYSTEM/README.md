@@ -233,6 +233,3 @@ The project demonstrates practical experience with audio data preparation, featu
 **Varsha A.**
 
 AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer | Python | SQL | Deep Learning | Machine Learning
-
-**GitHub:** [Varshh-hub](https://github.com/Varshh-hub)
-
