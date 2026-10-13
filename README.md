@@ -1,3 +1,7 @@
+# DL-END-TO-END
+
+A collection of end-to-end Deep Learning projects focused on developing practical skills in data preprocessing, neural network architecture design, model training, performance evaluation, and deployment using deep learning frameworks and real-world datasets.
+
 ### ⚠️ Deployment Notice
 
 The live deployment is currently not working as expected. However, you can still explore and run the project locally on your machine.
@@ -17,3 +21,4 @@ Thank you for your understanding! 😊
 **Varsha A.**
 
 AI & ML Graduate | Junior Data Scientist & Machine Learning Engineer | Python | SQL | Deep Learning | Machine Learning
+
