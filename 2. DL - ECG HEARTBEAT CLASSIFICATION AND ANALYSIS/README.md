@@ -1,26 +1,11 @@
-# DL - ECG Heartbeat Classification and Analysis
+###  Deployment Notice
 
-## Overview
-A deep learning project for ECG heartbeat classification and analysis.
+The live deployment is currently not working as expected. However, you can still explore and run the project locally on your machine.
 
-## Objectives
-- Preprocess ECG heartbeat signals.
-- Perform exploratory data analysis and visualization.
-- Develop a deep learning classification model.
-- Evaluate model performance using classification metrics.
-- Analyze prediction errors.
+**To try out the project:**
+1. Clone the repository or download it as a ZIP file.
+2. Extract the ZIP file if you downloaded it.
+3. Follow the setup instructions provided in this README to install the required dependencies and run the application locally.
 
-## Technologies
-- Python
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- PyTorch
-
-## Project Status
-In Progress
-
-## Disclaimer
-For educational purposes only. Not intended for medical diagnosis.
+Thank you for your understanding! 
+---
