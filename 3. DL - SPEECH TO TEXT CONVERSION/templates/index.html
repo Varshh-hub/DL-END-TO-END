@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Speech-to-Text | BiLSTM</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 18px; color: #202124; }
+    .card { border: 1px solid #ddd; border-radius: 18px; padding: 24px; box-shadow: 0 8px 28px #0000000d; }
+    h1 { margin-bottom: 8px; }
+    .muted { color: #666; }
+    button { border: 0; border-radius: 10px; padding: 12px 18px; margin: 10px 8px 10px 0; cursor: pointer; font-size: 1rem; }
+    #start { background: #1a73e8; color: white; } #stop, #clear { background: #eee; color: #222; }
+    #status { min-height: 1.5em; margin: 12px 0; }
+    #transcript { min-height: 150px; white-space: pre-wrap; border: 1px solid #ddd; border-radius: 12px; padding: 16px; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🎙️ Live Speech-to-Text</h1>
+    <p class="muted">BiLSTM + CTC educational prototype. Allow microphone access to begin.</p>
+    <button id="start">Start speaking</button>
+    <button id="stop" disabled>Stop</button>
+    <button id="clear">Clear text</button>
+    <p id="status" role="status">Ready.</p>
+    <h3>Recognized text</h3>
+    <div id="transcript" aria-live="polite"></div>
+  </div>
+<script>
+const startBtn = document.querySelector("#start");
+const stopBtn = document.querySelector("#stop");
+const clearBtn = document.querySelector("#clear");
+const statusEl = document.querySelector("#status");
+const transcriptEl = document.querySelector("#transcript");
+
+let stream = null, recorder = null, chunkTimer = null, chunks = [], busy = false, stopped = true;
+
+async function transcribeBlob(blob) {
+  if (!blob || blob.size < 1000 || busy) return;
+  busy = true;
+  const form = new FormData();
+  form.append("audio", blob, "speech.webm");
+  try {
+    const response = await fetch("/transcribe", { method: "POST", body: form });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || "Transcription failed.");
+    if (result.text) {
+      transcriptEl.textContent += (transcriptEl.textContent && !transcriptEl.textContent.endsWith(" ") ? " " : "") + result.text;
+    }
+    statusEl.textContent = "Listening…";
+  } catch (err) {
+    statusEl.textContent = err.message;
+  } finally {
+    busy = false;
+  }
+}
+
+startBtn.addEventListener("click", async () => {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    recorder = new MediaRecorder(stream);
+    chunks = [];
+    stopped = false;
+    recorder.ondataavailable = async (event) => {
+      if (event.data && event.data.size) {
+        chunks.push(event.data);
+        // MediaRecorder chunks may not be independently decodable in all browsers.
+      }
+    };
+    recorder.start();
+    statusEl.textContent = "Recording… Speak clearly. Click Stop to transcribe the recording.";
+    startBtn.disabled = true;
+    stopBtn.disabled = false;
+    // This simple prototype submits one complete recording at stop for reliable decoding.
+  } catch (err) {
+    statusEl.textContent = "Microphone access failed: " + err.message;
+  }
+});
+
+stopBtn.addEventListener("click", async () => {
+  if (!recorder || recorder.state === "inactive") return;
+  stopped = true;
+  statusEl.textContent = "Processing audio…";
+  recorder.onstop = async () => {
+    const mime = recorder.mimeType || "audio/webm";
+    const blob = new Blob(chunks, { type: mime });
+    await transcribeBlob(blob);
+    if (stream) stream.getTracks().forEach(track => track.stop());
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+    statusEl.textContent = "Done. Click Start speaking to record another segment.";
+  };
+  recorder.stop();
+});
+
+clearBtn.addEventListener("click", () => transcriptEl.textContent = "");
+</script>
+</body>
+</html>
